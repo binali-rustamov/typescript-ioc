@@ -17,7 +17,8 @@
     "tsc": "npm run tsc:es6 && npm run tsc:es5 && npm run tsc:index",
     "tsc:es5": "tsc --outDir . && renamer --find typescript-ioc --replace es5 'typescript-ioc*.js*' && replace 'typescript-ioc.js' 'es5.js' ./es5.js",
     "tsc:es6": "tsc --target ES6 --outDir . && renamer --find typescript-ioc --replace es6 'typescript-ioc*.js*'  && replace 'typescript-ioc.js' 'es6.js' ./es6.js",
-    "tsc:index": "tsc --outDir . src/index.ts"
+    "tsc:index": "tsc --outDir . src/index.ts",
+    "build-simple": "tsc --outDir ."
   },
   "nyc": {
     "include": [

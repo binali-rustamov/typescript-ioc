@@ -7,7 +7,7 @@
             "es6", 
             "dom"
         ],
-        "module": "commonjs",
+        "module": "system",
         "newLine": "LF",
         "noFallthroughCasesInSwitch": true,
         "noImplicitAny": true,

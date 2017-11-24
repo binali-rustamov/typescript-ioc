@@ -1,3 +1,4 @@
+///<reference path="../node_modules/reflect-metadata/reflect-metadata.d.ts"/>"
 'use strict';
 /**
  * This is a lightweight annotation-based dependency injection container for typescript.
@@ -51,7 +52,7 @@ export function Singleton(target: Function) {
  * @param scope The scope that will handle instantiations for this class.
  */
 export function Scoped(scope: Scope) {
-    return function(target: Function) {
+    return function (target: Function) {
         IoCContainer.bind(target).scope(scope);
     };
 }
@@ -74,7 +75,7 @@ export function Scoped(scope: Scope) {
  * @param provider The provider that will handle instantiations for this class.
  */
 export function Provided(provider: Provider) {
-    return function(target: Function) {
+    return function (target: Function) {
         IoCContainer.bind(target).provider(provider);
     };
 }
@@ -100,7 +101,7 @@ export function Provided(provider: Provider) {
  * @param target The base class that will be replaced by this class.
  */
 export function Provides(target: Function) {
-    return function(to: Function) {
+    return function (to: Function) {
         IoCContainer.bind(target).to(to);
     };
 }
@@ -274,10 +275,10 @@ class IoCContainer {
         const propKey = `__${key}`;
         Object.defineProperty(target.prototype, key, {
             enumerable: true,
-            get: function() {
+            get: function () {
                 return this[propKey] ? this[propKey] : this[propKey] = IoCContainer.get(propertyType);
             },
-            set: function(newValue) {
+            set: function (newValue) {
                 this[propKey] = newValue;
             }
         });
@@ -310,11 +311,13 @@ export interface Config {
      * @param target The implementation type
      */
     to(target: Object): Config;
+
     /**
      * Inform a provider to be used to create instances when a dependency for the source type is requested.
      * @param provider The provider to create instances
      */
     provider(provider: Provider): Config;
+
     /**
      * Inform a scope to handle the instances for objects created by the Container for this binding.
      * @param scope Scope to handle instances
@@ -429,13 +432,13 @@ export abstract class Scope {
      * A reference to the LocalScope. Local Scope return a new instance for each dependency resolution requested.
      * This is the default scope.
      */
-    // tslint:disable-next-line:variable-name
+        // tslint:disable-next-line:variable-name
     static Local: Scope;
     /**
      * A reference to the SingletonScope. Singleton Scope return the same instance for any
      * dependency resolution requested.
      */
-    // tslint:disable-next-line:variable-name
+        // tslint:disable-next-line:variable-name
     static Singleton: Scope;
 
     /**

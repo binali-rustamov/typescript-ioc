@@ -1,7 +1,7 @@
 .DS_Store
-*.js
-*.js.map
-*.d.ts
+#*.js
+#*.js.map
+#*.d.ts
 doc
 node_modules
 .vscode
@@ -9,3 +9,4 @@ node_modules
 coverage
 *.log
 npm-debug.log*
+.idea/
